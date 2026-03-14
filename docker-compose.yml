@@ -1,0 +1,120 @@
+version: '3.8'
+
+services:
+  # Main GUI Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dual-rag-evaluator
+    environment:
+      - DEBUG=${DEBUG:-false}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL:-all-MiniLM-L6-v2}
+      - CHROMADB_PATH=${CHROMADB_PATH:-./data/embeddings/chromadb}
+      - RESONANCEDB_HOST=${RESONANCEDB_HOST:-resonancedb}
+      - RESONANCEDB_PORT=${RESONANCEDB_PORT:-8080}
+    volumes:
+      - ./data/documents:/app/data/documents
+      - ./data/embeddings:/app/data/embeddings
+      - ./data/cache:/app/data/cache
+      - ./results:/app/results
+      - ./config/.env:/app/config/.env
+    ports:
+      - "8000:8000"  # For potential REST API
+    depends_on:
+      - resonancedb
+    networks:
+      - rag-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+
+  # ResonanceDB Service (Optional)
+  # Uncomment if you have ResonanceDB Docker available
+  resonancedb:
+    image: resonancedb:latest
+    container_name: resonancedb-service
+    environment:
+      - PORT=8080
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    volumes:
+      - resonancedb_data:/data
+    ports:
+      - "8080:8080"
+    networks:
+      - rag-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    profiles:
+      - with-resonancedb
+
+  # Optional: ChromaDB Service
+  # For distributed ChromaDB setup
+  chromadb:
+    image: ghcr.io/chroma-core/chroma:latest
+    container_name: chromadb-service
+    environment:
+      - CHROMA_HOST=0.0.0.0
+      - CHROMA_PORT=8001
+      - ANONYMIZED_TELEMETRY=false
+    volumes:
+      - chromadb_data:/chroma/data
+    ports:
+      - "8001:8001"
+    networks:
+      - rag-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/api/v1/heartbeat"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    profiles:
+      - with-chromadb
+
+  # Optional: REST API Service
+  # Uncomment for API-only deployment (no GUI)
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dual-rag-api
+    environment:
+      - DEBUG=${DEBUG:-false}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL:-all-MiniLM-L6-v2}
+      - CHROMADB_PATH=${CHROMADB_PATH:-./data/embeddings/chromadb}
+    volumes:
+      - ./data/documents:/app/data/documents
+      - ./data/embeddings:/app/data/embeddings
+      - ./data/cache:/app/data/cache
+      - ./config/.env:/app/config/.env
+    ports:
+      - "8000:8000"
+    networks:
+      - rag-network
+    restart: unless-stopped
+    profiles:
+      - with-api
+    command: ["fastapi.main"]
+
+volumes:
+  resonancedb_data:
+  chromadb_data:
+
+networks:
+  rag-network:
+    driver: bridge

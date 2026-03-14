@@ -1,0 +1,36 @@
+[flake8]
+max-line-length = 100
+max-complexity = 10
+exclude = 
+    .git,
+    __pycache__,
+    .tox,
+    venv,
+    env,
+    build,
+    dist,
+    .eggs,
+    *.egg,
+    .pytest_cache,
+    .mypy_cache,
+    node_modules,
+    data,
+    results,
+    docs/_build
+
+ignore = 
+    # E203: whitespace before ':'
+    E203,
+    # W503: line break before binary operator
+    W503,
+    # W504: line break after binary operator
+    W504,
+
+import-order-style = google
+application-import-names = core,ui,utils,config
+per-file-ignores =
+    __init__.py:F401,F403
+    tests/*:F401,F811
+
+# Docstring conventions (Google style)
+docstring-convention = google
