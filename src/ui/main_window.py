@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Optional
 from PyQt5.QtWidgets import (
     QMainWindow,
+    QApplication,
     QWidget,
     QVBoxLayout,
     QHBoxLayout,
@@ -38,9 +39,16 @@ from src.utils import (
     get_app_logger,
     get_ui_logger,
 )
-from src.core import DocumentProcessor, BaselineRetriever, DualRAGEvaluator
+# Lazy import of core modules - import on-demand to avoid torch DLL loading at startup
+# from src.core import DocumentProcessor, BaselineRetriever, DualRAGEvaluator
 
 logger = get_ui_logger()
+
+# Lazy import function
+def _get_core_modules():
+    """Import core modules on-demand to defer torch DLL loading."""
+    from src.core import DocumentProcessor, BaselineRetriever, DualRAGEvaluator
+    return DocumentProcessor, BaselineRetriever, DualRAGEvaluator
 
 
 class RAGComparisonThread(QThread):
@@ -54,9 +62,9 @@ class RAGComparisonThread(QThread):
         self,
         document_path: str,
         query: str,
-        doc_processor: DocumentProcessor,
-        retriever: BaselineRetriever,
-        evaluator: DualRAGEvaluator,
+        doc_processor: "DocumentProcessor",
+        retriever: "BaselineRetriever",
+        evaluator: "DualRAGEvaluator",
     ):
         super().__init__()
         self.document_path = document_path
@@ -400,6 +408,26 @@ on semantic negation handling.</p>
             QMessageBox.warning(self, "Missing Query", "Please enter a query.")
             return
 
+        # Lazy load core modules on first use
+        if self.doc_processor is None:
+            try:
+                self.results_display.append("[Status] Initializing AI models (first run)...")
+                QApplication.processEvents()
+                
+                DocumentProcessor, BaselineRetriever, DualRAGEvaluator = _get_core_modules()
+                self.doc_processor = DocumentProcessor()
+                self.retriever = BaselineRetriever()
+                self.evaluator = DualRAGEvaluator(
+                    self.retriever,
+                    self.retriever.resonance_client if hasattr(self.retriever, 'resonance_client') else None,
+                    self.doc_processor.model if hasattr(self.doc_processor, 'model') else None
+                )
+                self.results_display.append("[Status] Models loaded successfully")
+            except Exception as e:
+                QMessageBox.critical(self, "Error", f"Failed to load AI models: {str(e)}")
+                logger.error(f"Model loading error: {str(e)}")
+                return
+
         self.run_btn.setEnabled(False)
         self.progress_bar.setVisible(True)
 
@@ -467,7 +495,7 @@ on semantic negation handling.</p>
 
 def main():
     """Application entry point."""
-    app = __import__("PyQt5.QtWidgets").QApplication(sys.argv)
+    app = QApplication(sys.argv)
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())

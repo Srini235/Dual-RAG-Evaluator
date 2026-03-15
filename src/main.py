@@ -8,6 +8,12 @@ Start the application:
     python -m src.main --help  # Show help
 """
 
+# Force CPU mode before any imports to avoid CUDA DLL loading issues
+import os
+os.environ['TORCH_DEVICE'] = 'cpu'
+os.environ['CUDA_VISIBLE_DEVICES'] = ''
+os.environ['TRANSFORMERS_OFFLINE'] = '0'
+
 import sys
 import argparse
 import logging
