@@ -8,21 +8,31 @@ Start the application:
     python -m src.main --help  # Show help
 """
 
-# Force CPU mode before any imports to avoid CUDA DLL loading issues
 import os
+import sys
+from pathlib import Path
+
+# Force CPU mode before any imports to avoid CUDA DLL loading issues
 os.environ['TORCH_DEVICE'] = 'cpu'
 os.environ['CUDA_VISIBLE_DEVICES'] = ''
 os.environ['TRANSFORMERS_OFFLINE'] = '0'
 
-import sys
-import argparse
-import logging
-from pathlib import Path
+# MUST DO THIS FIRST before any other imports!
+# If running in venv, inject system Python's site-packages for torch and related packages
+if sys.prefix != sys.base_prefix:  # Running in venv
+    system_site_packages = Path(sys.base_prefix) / "Lib" / "site-packages"
+    if system_site_packages.exists():
+        # Insert at position 0 so system packages are found first
+        # This allows us to use system's torch (which works) while keeping venv's PyQt5
+        sys.path.insert(0, str(system_site_packages))
 
 # Add project root to path
 project_root = Path(__file__).parent.parent
-sys.path.insert(0, str(project_root))
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
 
+import argparse
+import logging
 from src.utils import get_app_logger
 from src.config import get_settings
 
