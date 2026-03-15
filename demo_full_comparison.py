@@ -15,7 +15,7 @@ from core.resonance_client import MockResonanceDBClient
 from core.wave_mapper import query_to_wave
 
 # Output handling
-output_file = open('demo_comparison_results.txt', 'w')
+output_file = open('demo_comparison_results.txt', 'w', encoding='utf-8')
 
 def log(msg):
     """Print to both console and file"""
@@ -222,8 +222,8 @@ for category in sorted(category_stats.keys()):
     log(f'{category:<30} ResonanceDB better in {better_queries}/{len(improvements)} queries')
 
 log('\n' + '=' * 100)
-log('✅ SUCCESS! Comprehensive comparison generated.')
+log('[OK] SUCCESS! Comprehensive comparison generated.')
 log('=' * 100)
 
 output_file.close()
-print(f'\n✅ Full Report saved to: demo_comparison_results.txt')
+print(f'\n[OK] Full Report saved to: demo_comparison_results.txt')
