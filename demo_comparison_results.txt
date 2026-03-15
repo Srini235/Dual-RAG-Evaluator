@@ -1,0 +1,441 @@
+====================================================================================================
+EXTENDED NEGATION TEST: ChromaDB vs ResonanceDB Comparison
+21 Query Pairs Across 5 Test Categories
+====================================================================================================
+Timestamp: 2026-03-15 15:23:16
+
+[INIT] Loading 15 sample documents...
+  [OK] Loaded 15 documents
+  [OK] Indexed in ChromaDB (cosine similarity)
+  [OK] Indexed in ResonanceDB (wave-based amplitudes)
+
+[QUERIES] Running side-by-side comparison...
+====================================================================================================
+
+[QUERY  1] "What is machine learning?"
+         Category: Basic Negations
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.6661 | Machine learning enables computers to learn from data without exp...
+    [2] 0.5277 | Some machine learning models require less data than others....
+    [3] 0.4502 | Deep learning models are not simple but they are not impossible t...
+    AVG SCORE: 0.5480
+
+  ResonanceDB Results:
+    [1] 0.7301 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8531 | AI systems are not designed for every single task in the world....
+    [3] 0.9366 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8399
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +53.3%
+
+[QUERY  2] "Can systems learn without programming?"
+         Category: Basic Negations
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.5847 | Machine learning enables computers to learn from data without exp...
+    [2] 0.4123 | Neural networks cannot process information the same way as biolog...
+    [3] 0.3864 | AI systems are not designed for every single task in the world....
+    AVG SCORE: 0.4611
+
+  ResonanceDB Results:
+    [1] 0.7660 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8300 | AI systems are not designed for every single task in the world....
+    [3] 0.9398 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8453
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +83.3%
+
+[QUERY  3] "Are AI systems universal?"
+         Category: Basic Negations
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.6193 | AI systems are not designed for every single task in the world....
+    [2] 0.4807 | While AI is not perfect, it is not useless either for complex ana...
+    [3] 0.4574 | Not all neural networks need the same computational resources....
+    AVG SCORE: 0.5191
+
+  ResonanceDB Results:
+    [1] 0.7483 | Machine learning enables computers to learn from data without exp...
+    [2] 0.7907 | AI systems are not designed for every single task in the world....
+    [3] 0.8831 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8074
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +55.5%
+
+[QUERY  4] "How do neural networks work differently?"
+         Category: Basic Negations
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.5532 | Not all neural networks need the same computational resources....
+    [2] 0.5451 | Neural networks cannot process information the same way as biolog...
+    [3] 0.4862 | Deep learning models are not simple but they are not impossible t...
+    AVG SCORE: 0.5282
+
+  ResonanceDB Results:
+    [1] 0.7286 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8334 | AI systems are not designed for every single task in the world....
+    [3] 0.9040 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8220
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +55.6%
+
+[QUERY  5] "Is explicit programming needed for AI?"
+         Category: Basic Negations
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.5409 | Machine learning enables computers to learn from data without exp...
+    [2] 0.5353 | While AI is not perfect, it is not useless either for complex ana...
+    [3] 0.4365 | AI systems are not designed for every single task in the world....
+    AVG SCORE: 0.5042
+
+  ResonanceDB Results:
+    [1] 0.7564 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8374 | AI systems are not designed for every single task in the world....
+    [3] 0.9257 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8398
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +66.6%
+
+[QUERY  6] "Can deep learning be simple?"
+         Category: Multiple Negations
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.8052 | Deep learning models are not simple but they are not impossible t...
+    [2] 0.4712 | Not all neural networks need the same computational resources....
+    [3] 0.4621 | Machine learning enables computers to learn from data without exp...
+    AVG SCORE: 0.5795
+
+  ResonanceDB Results:
+    [1] 0.7392 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8352 | AI systems are not designed for every single task in the world....
+    [3] 0.9213 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8319
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +43.6%
+
+[QUERY  7] "Does the algorithm need labels?"
+         Category: Multiple Negations
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.5735 | The algorithm neither relies on labels nor requires human interve...
+    [2] 0.4519 | Few algorithms work without any preprocessing steps....
+    [3] 0.3711 | Machine learning enables computers to learn from data without exp...
+    AVG SCORE: 0.4655
+
+  ResonanceDB Results:
+    [1] 0.7759 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8022 | AI systems are not designed for every single task in the world....
+    [3] 0.8768 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8183
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +75.8%
+
+[QUERY  8] "Is this approach exclusive?"
+         Category: Multiple Negations
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.5274 | This approach does not exclude other methods and is not limited t...
+    [2] 0.2587 | This technique is neither new nor completely obsolete in modern a...
+    [3] 0.2526 | Few algorithms work without any preprocessing steps....
+    AVG SCORE: 0.3462
+
+  ResonanceDB Results:
+    [1] 0.7715 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8500 | AI systems are not designed for every single task in the world....
+    [3] 0.8893 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8369
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +141.7%
+
+[QUERY  9] "What methods are neither included nor excluded?"
+         Category: Multiple Negations
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.6284 | This approach does not exclude other methods and is not limited t...
+    [2] 0.3952 | Few algorithms work without any preprocessing steps....
+    [3] 0.3740 | Treatment is not a silver bullet and cannot ignore other factors....
+    AVG SCORE: 0.4659
+
+  ResonanceDB Results:
+    [1] 0.7255 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8135 | AI systems are not designed for every single task in the world....
+    [3] 0.9120 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8170
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +75.4%
+
+[QUERY 10] "Are limitations important to understand?"
+         Category: Multiple Negations
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.3060 | Some machine learning models require less data than others....
+    [2] 0.2878 | Deep learning models are not simple but they are not impossible t...
+    [3] 0.2435 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.2791
+
+  ResonanceDB Results:
+    [1] 0.7221 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8053 | AI systems are not designed for every single task in the world....
+    [3] 0.8847 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8040
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +188.1%
+
+[QUERY 11] "Which models need less data?"
+         Category: Partial Negations
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.6869 | Some machine learning models require less data than others....
+    [2] 0.2800 | Machine learning enables computers to learn from data without exp...
+    [3] 0.2679 | Deep learning models are not simple but they are not impossible t...
+    AVG SCORE: 0.4116
+
+  ResonanceDB Results:
+    [1] 0.7712 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8157 | AI systems are not designed for every single task in the world....
+    [3] 0.9066 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8312
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +101.9%
+
+[QUERY 12] "What computational resources are needed?"
+         Category: Partial Negations
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.5223 | Not all neural networks need the same computational resources....
+    [2] 0.4305 | Few algorithms work without any preprocessing steps....
+    [3] 0.3462 | Machine learning enables computers to learn from data without exp...
+    AVG SCORE: 0.4330
+
+  ResonanceDB Results:
+    [1] 0.7310 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8515 | AI systems are not designed for every single task in the world....
+    [3] 0.8961 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8262
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +90.8%
+
+[QUERY 13] "Do algorithms need preprocessing?"
+         Category: Partial Negations
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.7614 | Few algorithms work without any preprocessing steps....
+    [2] 0.3373 | Machine learning enables computers to learn from data without exp...
+    [3] 0.3239 | Not all neural networks need the same computational resources....
+    AVG SCORE: 0.4742
+
+  ResonanceDB Results:
+    [1] 0.7381 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8064 | AI systems are not designed for every single task in the world....
+    [3] 0.8852 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8099
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +70.8%
+
+[QUERY 14] "What constraints exist?"
+         Category: Partial Negations
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.2776 | Some machine learning models require less data than others....
+    [2] 0.2249 | Few algorithms work without any preprocessing steps....
+    [3] 0.2167 | Machine learning enables computers to learn from data without exp...
+    AVG SCORE: 0.2397
+
+  ResonanceDB Results:
+    [1] 0.7755 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8231 | AI systems are not designed for every single task in the world....
+    [3] 0.9278 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8421
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +251.3%
+
+[QUERY 15] "Are all systems equal in requirements?"
+         Category: Partial Negations
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.2930 | AI systems are not designed for every single task in the world....
+    [2] 0.2753 | Not all neural networks need the same computational resources....
+    [3] 0.2458 | Some machine learning models require less data than others....
+    AVG SCORE: 0.2714
+
+  ResonanceDB Results:
+    [1] 0.7452 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8054 | AI systems are not designed for every single task in the world....
+    [3] 0.9319 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8275
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +204.9%
+
+[QUERY 16] "When should aspirin not be used?"
+         Category: Drug/Medication
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.7827 | Aspirin is not recommended for every patient though it helps many...
+    [2] 0.2882 | The medication does not cure the disease but can reduce symptoms....
+    [3] 0.2486 | Treatment is not a silver bullet and cannot ignore other factors....
+    AVG SCORE: 0.4398
+
+  ResonanceDB Results:
+    [1] 0.7457 | Machine learning enables computers to learn from data without exp...
+    [2] 0.7993 | AI systems are not designed for every single task in the world....
+    [3] 0.8700 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8050
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +83.0%
+
+[QUERY 17] "What are medication limitations?"
+         Category: Drug/Medication
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.3350 | The medication does not cure the disease but can reduce symptoms....
+    [2] 0.3186 | Treatment is not a silver bullet and cannot ignore other factors....
+    [3] 0.3147 | Aspirin is not recommended for every patient though it helps many...
+    AVG SCORE: 0.3228
+
+  ResonanceDB Results:
+    [1] 0.7351 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8067 | AI systems are not designed for every single task in the world....
+    [3] 0.8818 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8079
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +150.3%
+
+[QUERY 18] "Can treatment solve everything?"
+         Category: Drug/Medication
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.5458 | Treatment is not a silver bullet and cannot ignore other factors....
+    [2] 0.5339 | The medication does not cure the disease but can reduce symptoms....
+    [3] 0.2146 | Aspirin is not recommended for every patient though it helps many...
+    AVG SCORE: 0.4314
+
+  ResonanceDB Results:
+    [1] 0.7213 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8001 | AI systems are not designed for every single task in the world....
+    [3] 0.9099 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8104
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +87.8%
+
+[QUERY 19] "What other factors matter?"
+         Category: Drug/Medication
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.3110 | Treatment is not a silver bullet and cannot ignore other factors....
+    [2] 0.1405 | Some machine learning models require less data than others....
+    [3] 0.1056 | Not all neural networks need the same computational resources....
+    AVG SCORE: 0.1857
+
+  ResonanceDB Results:
+    [1] 0.7422 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8152 | AI systems are not designed for every single task in the world....
+    [3] 0.8825 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8133
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +338.0%
+
+[QUERY 20] "Is aspirin safe for everyone?"
+         Category: Drug/Medication
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.8237 | Aspirin is not recommended for every patient though it helps many...
+    [2] 0.3082 | The medication does not cure the disease but can reduce symptoms....
+    [3] 0.2033 | Treatment is not a silver bullet and cannot ignore other factors....
+    AVG SCORE: 0.4451
+
+  ResonanceDB Results:
+    [1] 0.7461 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8479 | AI systems are not designed for every single task in the world....
+    [3] 0.8963 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8301
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +86.5%
+
+[QUERY 21] "Is AI imperfect?"
+         Category: Complex Scenarios
+----------------------------------------------------------------------------------------------------
+  ChromaDB Results:
+    [1] 0.6344 | While AI is not perfect, it is not useless either for complex ana...
+    [2] 0.4704 | AI systems are not designed for every single task in the world....
+    [3] 0.3565 | Not all neural networks need the same computational resources....
+    AVG SCORE: 0.4871
+
+  ResonanceDB Results:
+    [1] 0.7751 | Machine learning enables computers to learn from data without exp...
+    [2] 0.8073 | AI systems are not designed for every single task in the world....
+    [3] 0.8861 | Neural networks cannot process information the same way as biolog...
+    AVG SCORE: 0.8228
+
+  COMPARISON:
+    ResonanceDB vs ChromaDB: +68.9%
+
+====================================================================================================
+COMPARISON SUMMARY STATISTICS
+====================================================================================================
+
+Overall Average Improvement (ResonanceDB vs ChromaDB): +113.0%
+
+Improvement by Category:
+  Basic Negations                 +62.9%
+  Complex Scenarios               +68.9%
+  Drug/Medication                +149.1%
+  Multiple Negations             +104.9%
+  Partial Negations              +143.9%
+
+
+Detailed Query Results:
+Query                                                  ChromaDB  ResonanceDB  Improvement
+----------------------------------------------------------------------------------------------------
+What is machine learning?                               0.5480       0.8399        53.3%
+Can systems learn without programming?                  0.4611       0.8453        83.3%
+Are AI systems universal?                               0.5191       0.8074        55.5%
+How do neural networks work differently?                0.5282       0.8220        55.6%
+Is explicit programming needed for AI?                  0.5042       0.8398        66.6%
+Can deep learning be simple?                            0.5795       0.8319        43.6%
+Does the algorithm need labels?                         0.4655       0.8183        75.8%
+Is this approach exclusive?                             0.3462       0.8369       141.7%
+What methods are neither included nor excluded?         0.4659       0.8170        75.4%
+Are limitations important to understand?                0.2791       0.8040       188.1%
+Which models need less data?                            0.4116       0.8312       101.9%
+What computational resources are needed?                0.4330       0.8262        90.8%
+Do algorithms need preprocessing?                       0.4742       0.8099        70.8%
+What constraints exist?                                 0.2397       0.8421       251.3%
+Are all systems equal in requirements?                  0.2714       0.8275       204.9%
+When should aspirin not be used?                        0.4398       0.8050        83.0%
+What are medication limitations?                        0.3228       0.8079       150.3%
+Can treatment solve everything?                         0.4314       0.8104        87.8%
+What other factors matter?                              0.1857       0.8133       338.0%
+Is aspirin safe for everyone?                           0.4451       0.8301        86.5%
+Is AI imperfect?                                        0.4871       0.8228        68.9%
+
+
+Category Performance Analysis:
+----------------------------------------------------------------------------------------------------
+Basic Negations                ResonanceDB better in 5/5 queries
+Complex Scenarios              ResonanceDB better in 1/1 queries
+Drug/Medication                ResonanceDB better in 5/5 queries
+Multiple Negations             ResonanceDB better in 5/5 queries
+Partial Negations              ResonanceDB better in 5/5 queries
+
+====================================================================================================
